@@ -1,4 +1,11 @@
 import { program } from "commander";
+import { listContacts } from "./contacts";
+
+const contactsImport = require("./contacts");
+
+// // import listContacts from "./contacts.js";
+// console.log(listContacts);
+
 program
   .option("-a, --action <type>", "choose action")
   .option("-i, --id <type>", "user id")
