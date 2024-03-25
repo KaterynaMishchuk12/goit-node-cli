@@ -42,7 +42,7 @@ async function removeContact(contactId) {
       const contactToRemove = contacts.splice(contactIndex, 1);
 
       await fs.writeFile(contactsPath, JSON.stringify(contacts, null, 2));
-      // або так?:   await fs.writeFile(contactsPath, JSON.stringify(contacts)).join(" ")
+
       return contactToRemove;
     } else {
       return null;

@@ -1,14 +1,5 @@
 import { program } from "commander";
-// import {
-//   listContacts,
-//   getContactById,
-//   removeContact,
-//   addContact,
-// } from "./contacts.js";
-
 import contacts from "./contacts.js";
-
-// const { listContacts, getContactById, removeContact, addContact } = contacts;
 
 program
   .option("-a, --action <type>", "choose action")
@@ -21,7 +12,6 @@ program.parse();
 
 const options = program.opts();
 
-// TODO: рефакторити
 async function invokeAction({ action, id, name, email, phone }) {
   switch (action) {
     case "list":
