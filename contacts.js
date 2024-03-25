@@ -6,15 +6,13 @@ const contactsPath = path.join("db", "contacts.json");
 async function listContacts() {
   try {
     const readJsonResult = await fs.readFile(contactsPath);
-
     const arrayOfContacts = JSON.parse(readJsonResult);
-    // console.log(arrayOfContacts);
+
     return arrayOfContacts;
   } catch (error) {
     console.log(error);
   }
 }
-listContacts();
 
 async function getContactById(contactId) {
   try {
@@ -32,7 +30,6 @@ async function getContactById(contactId) {
     console.log(error);
   }
 }
-getContactById();
 
 async function removeContact(contactId) {
   try {
@@ -43,7 +40,6 @@ async function removeContact(contactId) {
 
     if (contactIndex !== -1) {
       const contactToRemove = contacts.splice(contactIndex, 1);
-      // або так: const contactToRemove = contacts.splice(contactIndex, 1)[0];
 
       await fs.writeFile(contactsPath, JSON.stringify(contacts, null, 2));
       // або так?:   await fs.writeFile(contactsPath, JSON.stringify(contacts)).join(" ")
@@ -51,9 +47,10 @@ async function removeContact(contactId) {
     } else {
       return null;
     }
-  } catch (error) {}
+  } catch (error) {
+    console.log(error.message);
+  }
 }
-removeContact();
 
 async function addContact(name, email, phone) {
   try {
@@ -67,7 +64,3 @@ async function addContact(name, email, phone) {
 }
 
 export default { listContacts, getContactById, removeContact, addContact };
-
-// module.exports = {
-//   listContacts,
-// };
